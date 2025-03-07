@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [QuizController::class, 'index'])->name('quizzes.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,6 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/{quiz}/edit', [QuizController::class, 'edit'])->name('quiz.edit');
+    Route::get('/create', [QuizController::class, 'create'])->name('quiz.create');
+    Route::put('/{quiz}', [QuizController::class, 'update'])->name('quiz.update');
+    Route::post('/quizzes', [QuizController::class, 'store'])->name('quizzes.store');
+    Route::delete('/{quiz}', [QuizController::class, 'destroy'])->name('quiz.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';
