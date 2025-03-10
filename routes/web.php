@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuizResultController;
+use App\Models\Quiz;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,11 +30,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::get('/{quiz}/edit', [QuizController::class, 'edit'])->name('quiz.edit');
     Route::get('/create', [QuizController::class, 'create'])->name('quiz.create');
     Route::put('/{quiz}', [QuizController::class, 'update'])->name('quiz.update');
     Route::post('/quizzes', [QuizController::class, 'store'])->name('quizzes.store');
     Route::delete('/{quiz}', [QuizController::class, 'destroy'])->name('quiz.destroy');
+
+    // Route::post('/{quiz}/answer', [QuizResultController::class, 'sendAnswer'])->name('quizzes.sendAnswer');
+    Route::post('/{quiz}/result', [QuizResultController::class, 'showResult'])->name('quizzes.showResult');
 });
 
 
