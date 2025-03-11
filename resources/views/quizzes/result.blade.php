@@ -14,10 +14,12 @@
 
     <div class="container mt-4">
         <h2>結果は...</h2>
-            @if(isset($result) && isset($explanation))
+            @if(isset($result))
                 <div class="quiz-result">
                     <p><strong>結果:</strong> {{ $result }}</p>
-                    <p><strong>解説:</strong> {{ $explanation }}</p>
+                    @if(isset($explanation))
+                        <p><strong>解説:</strong> {{ $explanation }}</p>
+                    @endif
                 </div>
             @endif
     </div>
