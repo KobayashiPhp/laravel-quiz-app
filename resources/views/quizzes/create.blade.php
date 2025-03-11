@@ -46,10 +46,10 @@
             <div class="mb-3">
                 <label for="correct_option" class="form-label">正解</label>
                 <select name="correct_option" id="correct_option" class="form-control" required>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
+                    <option value="option_a">A</option>
+                    <option value="option_b">B</option>
+                    <option value="option_c">C</option>
+                    <option value="option_d">D</option>
                 </select>
             </div>
             <div class="mb-3">
